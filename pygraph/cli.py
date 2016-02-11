@@ -3,7 +3,7 @@ import click
 import graphviz
 from functional import seq
 
-ENGINES = ['dot', 'neato', 'twopi', 'circo', 'fdp', 'sfpd', 'patchword', 'osage']
+ENGINES = ['dot', 'neato', 'twopi', 'circo', 'fdp', 'sfdp', 'patchword', 'osage']
 
 
 @click.command()
