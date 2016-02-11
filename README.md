@@ -18,7 +18,7 @@ Options:
 
 ### Examples
 ```bash
-pygraph -d tree ab ac bd be cd ce
+pygraph -d tree ab ac bd be
 ```
 
 ![tree](tree.png)
