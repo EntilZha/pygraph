@@ -15,5 +15,16 @@ setup(
     install_requires=['graphviz', 'click', 'scalafunctional'],
     entry_points={
         'console_scripts': ['pygraph = pygraph.cli:main']
-    }
+    },
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Topic :: Software Development :: Libraries :: Python Modules'
+    ]
 )
+
