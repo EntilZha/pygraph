@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='pygraph',
+    name='pygraph-cli',
     description='CLI for pygraphviz powered by graphviz',
     url='https://github.com/EntilZha/pygraph',
     author='Pedro Rodriguez',
