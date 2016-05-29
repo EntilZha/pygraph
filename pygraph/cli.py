@@ -26,9 +26,10 @@ def split_edge(edge):
 @click.option('--undirected/--directed', '-u/-d', default=True)
 @click.option('--format', default='png', type=str)
 @click.option('--name', '-n', default=None, type=str)
+@click.option('--dot', is_flag=True)
 @click.argument('file', type=click.Path(writable=True))
 @click.argument('edges', nargs=-1, required=True)
-def main(engine, undirected, format, name, file, edges):
+def main(engine, undirected, format, name, dot, file, edges):
     if undirected:
         graph = graphviz.Graph(engine=engine, format=format)
     else:
@@ -42,7 +43,7 @@ def main(engine, undirected, format, name, file, edges):
         .for_each(lambda e: graph.edge(e.left, e.right, label=e.label))
     filepath, filename = path.split(file)
     filepath = filepath if filepath != '' else None
-    graph.render(filename=filename, directory=filepath, cleanup=True)
+    graph.render(filename=filename, directory=filepath, cleanup=not dot)
 
 
 if __name__ == '__main__':
