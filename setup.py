@@ -11,8 +11,8 @@ setup(
     license='MIT',
     keywords='graph visualization graphviz python cli',
     packages=find_packages(),
-    version='0.0.0',
-    install_requires=['graphviz', 'click', 'scalafunctional'],
+    version='0.1.0',
+    install_requires=['graphviz', 'click', 'pyfunctional'],
     entry_points={
         'console_scripts': ['pygraph = pygraph.cli:main']
     },
