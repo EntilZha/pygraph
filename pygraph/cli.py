@@ -22,11 +22,13 @@ def split_edge(edge):
 
 
 @click.command()
-@click.option('--engine', '-e', default='dot', type=click.Choice(ENGINES))
-@click.option('--undirected/--directed', '-u/-d', default=True)
-@click.option('--format', default='png', type=str)
-@click.option('--name', '-n', default=None, type=str)
-@click.option('--dot', is_flag=True)
+@click.option('--engine', '-e', default='dot', type=click.Choice(ENGINES),
+              help="Choose layout engine to use")
+@click.option('--undirected/--directed', '-u/-d', default=True,
+              help="Specify undirected or directed edges")
+@click.option('--format', default='png', type=str, help='Image format')
+@click.option('--name', '-n', default=None, type=str, help='Name of graph in image')
+@click.option('--dot', is_flag=True, help='Preserve the source dot file')
 @click.argument('file', type=click.Path(writable=True))
 @click.argument('edges', nargs=-1, required=True)
 def main(engine, undirected, format, name, dot, file, edges):

@@ -24,9 +24,12 @@ Usage: pygraph [OPTIONS] FILE EDGES...
 
 Options:
   -e, --engine [dot|neato|twopi|circo|fdp|sfdp|patchword|osage]
+                                  Choose layout engine to use
   -u, --undirected / -d, --directed
-  --format TEXT
-  -n, --name TEXT
+                                  Specify undirected or directed edges
+  --format TEXT                   Image format
+  -n, --name TEXT                 Name of graph in image
+  --dot                           Preserve the source dot file
   --help                          Show this message and exit.
 ```
 
@@ -41,3 +44,4 @@ pip install pygraph-cli
 * Nodes can have any name when separated by `-` (eg: `root-child`)
 * To label the edge, append `:` and any text (eg: `root-child:label`)
 * Name the image by passing `-n` option
+* To keep the original dot source, pass `--dot`
