@@ -29,9 +29,10 @@ def split_edge(edge):
 @click.option('--format', default='png', type=str, help='Image format')
 @click.option('--name', '-n', default=None, type=str, help='Name of graph in image')
 @click.option('--dot', is_flag=True, help='Preserve the source dot file')
+@click.option('--no-vertex-labels', is_flag=True, help="Don't label vertex labels")
 @click.argument('file', type=click.Path(writable=True))
 @click.argument('edges', nargs=-1, required=True)
-def main(engine, undirected, format, name, dot, file, edges):
+def main(engine, undirected, format, name, dot, file, edges, no_vertex_labels):
     if undirected:
         graph = graphviz.Graph(engine=engine, format=format)
     else:
@@ -39,9 +40,15 @@ def main(engine, undirected, format, name, dot, file, edges):
     if name:
         graph.body.append(r'label = "{0}"'.format(name))
     edges = seq(edges).map(split_edge)
-    edges.map(lambda e: (e.left, e.right)).flatten().distinct()\
-        .filter_not(lambda n: n is None).for_each(lambda n: graph.node(n))
-    edges.filter(lambda e: e.right is not None)\
+
+    if no_vertex_labels:
+        edges.map(lambda e: (e.left, e.right)).flatten().distinct()\
+            .filter_not(lambda n: n is None).for_each(lambda n: graph.node(n, label=''))
+    else:
+        edges.map(lambda e: (e.left, e.right)).flatten().distinct() \
+            .filter_not(lambda n: n is None).for_each(lambda n: graph.node(n))
+
+    edges.filter(lambda e: e.right is not None) \
         .for_each(lambda e: graph.edge(e.left, e.right, label=e.label))
     filepath, filename = path.split(file)
     filepath = filepath if filepath != '' else None
