@@ -30,6 +30,7 @@ Options:
   --format TEXT                   Image format
   -n, --name TEXT                 Name of graph in image
   --dot                           Preserve the source dot file
+  --no-vertex-labels              Don't label vertex labels
   --help                          Show this message and exit.
 ```
 
